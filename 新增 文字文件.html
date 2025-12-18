@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今日自我照顧小成就自檢表</title>
+    <style>
+        :root {
+            --primary-color: #6a89cc;
+            --bg-color: #f7f9fc;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --btn-hover: #4a69bd;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", "Heiti TC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 600px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+        }
+
+        .instruction {
+            background-color: #eaf2ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 0.95em;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .question-item {
+            margin-bottom: 12px;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+
+        .question-item:hover {
+            background-color: #f8faff;
+        }
+
+        /* 自定義 Checkbox 樣式 */
+        .question-item input[type="checkbox"] {
+            transform: scale(1.5);
+            margin-right: 15px;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+
+        .question-item label {
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.05em;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--btn-hover);
+        }
+
+        /* 結果顯示區域 */
+        #resultArea {
+            display: none;
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            animation: fadeIn 0.5s;
+        }
+
+        .result-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .result-desc {
+            font-size: 1.1em;
+        }
+
+        /* 等級顏色 */
+        .level-1 { background-color: #fff3cd; color: #856404; border: 2px solid #ffeeba; }
+        .level-2 { background-color: #d1ecf1; color: #0c5460; border: 2px solid #bee5eb; }
+        .level-3 { background-color: #d4edda; color: #155724; border: 2px solid #c3e6cb; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>今日能量小檢測</h1>
+    <p class="subtitle">專注於每一個小小的勝利</p>
+
+    <div class="instruction">
+        <strong>說明：</strong> 請回想過去 24 小時，如果您完成了以下事項（無論做得多完美，只要有做就算），請打勾。不要給自己壓力。
+    </div>
+
+    <form id="quizForm">
+        <div class="question-item"><label><input type="checkbox" value="1"> 我今天有刷牙或洗臉。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 我至少吃了一頓正餐（或有好好進食）。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 我喝了足夠的水（至少 3 杯）。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 昨晚我有讓自己躺在床上休息（無論有無睡著）。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 我有按時服藥（如果有處方）或補充維他命。</label></div>
+        
+        <div class="question-item"><label><input type="checkbox" value="1"> 我離開了床鋪，移動到了家裡的其他地方。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 我打開了窗簾，或看見了陽光。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 我做了簡單的身體活動（伸展、散步、深呼吸皆可）。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 我稍微整理了一個小角落（如桌面、床鋪）。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 我換掉了睡衣，穿上了外出的衣服或乾淨的家居服。</label></div>
+
+        <div class="question-item"><label><input type="checkbox" value="1"> 我今天和某個人說了話（或是傳了訊息互動）。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 我允許自己哭泣或宣洩情緒，沒有過度壓抑。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 我聽了一首喜歡的歌，或看了一部喜歡的影片。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 當負面想法出現時，我嘗試轉移注意力或告訴自己「這只是暫時的」。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 我今天有控制自己滑手機看負面新聞的時間。</label></div>
+
+        <div class="question-item"><label><input type="checkbox" value="1"> 我做了一件讓自己感到舒適的小事（如泡澡、喝熱茶）。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 我今天沒有對自己說太嚴厲的批評。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 我接受了我今天可能狀態不佳，並原諒了自己。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> 我發現了生活中的一個小確幸（如好天氣、可愛的貓狗）。</label></div>
+        <div class="question-item"><label><input type="checkbox" value="1"> **我今天撐過來了，我還在這裡。**</label></div>
+
+        <button type="button" onclick="calculateScore()">查看結果</button>
+    </form>
+
+    <div id="resultArea">
+        <div class="result-title" id="resultTitle"></div>
+        <div class="result-desc" id="resultDesc"></div>
+    </div>
+
+    <div class="footer-note">
+        注意：這個網址只給寶寶所以應該不會有真的笨笨的不尋求醫療幫助吧~~
+        <br>
+    </div>
+</div>
+
+<script>
+    function calculateScore() {
+        // 取得所有被打勾的 checkbox
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        const score = checkboxes.length;
+        
+        const resultArea = document.getElementById('resultArea');
+        const resultTitle = document.getElementById('resultTitle');
+        const resultDesc = document.getElementById('resultDesc');
+        
+        // 重置樣式
+        resultArea.className = '';
+        resultArea.style.display = 'block';
+
+        // 依據分數判定等級 (總分20)
+        // 邏輯：做到的事情越少(分數低)，越需要鼓勵；做得多(分數高)，給予讚賞
+        
+        if (score <= 7) {
+            // Level 1: 0-7 分
+            resultArea.classList.add('level-1');
+            resultTitle.textContent = "還需要努努力我們一起加油";
+            resultDesc.textContent = `寶寶，我知道你今天可能過得很辛苦，連起床或吃飯都變得很費力。沒關係的，這不是你的錯。今天你已經盡力了，請好好休息，我們明天再試著完成一兩件小事就好。我在這裡陪你。`;
+        } else if (score <= 14) {
+            // Level 2: 8-14 分
+            resultArea.classList.add('level-2');
+            resultTitle.textContent = "有在進步喔! 很好";
+            resultDesc.textContent = `看來寶寶你今天有棒棒的好好生活！雖然可能還是有些疲憊，但你完成了一半以上的小目標，這非常不容易。請給自己一個大大的掌聲鼓勵鼓勵，你正在慢慢找回力量！`;
+        } else {
+            // Level 3: 15-20 分
+            resultArea.classList.add('level-3');
+            resultTitle.textContent = "太棒了吧!!!";
+            resultDesc.textContent = `哇！看看你今天完成了多少事！這顯示你的狀態真的在變好，或者你用了極大的意志力來照顧自己。寶寶你真的很棒！`;
+        }
+
+        // 滾動到結果區域
+        resultArea.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
